@@ -11,6 +11,7 @@
 3. Three-screen onboarding with swipe + dots, skip/next logic, assets-driven data (constants), and a reusable CustomButton.
 4. Sign-up/sign-in screens: scrollable forms using KeyboardAvoidingView + TouchableWithoutFeedback, a reusable InputField and custom buttons — wired with useState form handling and placeholder async handlers.
 5. Wire Clerk email auth into the app, then implement useSignUp / useSignIn flows in signup/signin screens including email verification modals and success modal handling.
+6. Adds a custom bottom tab bar (Tabs from expo-router) with four screens — Home, Rides, Chat and Profile.
 
 ## Technologies
 
