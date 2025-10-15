@@ -10,12 +10,15 @@
 2. Remove Expo boilerplate you don’t need, add a minimal file-based routing structure (onboarding + tabs), wire assets & fonts.
 3. Three-screen onboarding with swipe + dots, skip/next logic, assets-driven data (constants), and a reusable CustomButton.
 4. Sign-up/sign-in screens: scrollable forms using KeyboardAvoidingView + TouchableWithoutFeedback, a reusable InputField and custom buttons — wired with useState form handling and placeholder async handlers.
+5. Wire Clerk email auth into the app, then implement useSignUp / useSignIn flows in signup/signin screens including email verification modals and success modal handling.
 
 ## Technologies
 
 1. NativeWind: Style using Tailwind CSS
 2. Lint/Prettier: Catching bad/error code and fix how it looks
 3. react-native-swiper: Carousel gestures on Onboarding screens
+4. Clerk: Email authentication (with OTP)
+5. react-native-modal: Customizable modal
 
 ## How to Run (Android)
 
