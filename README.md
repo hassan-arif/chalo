@@ -12,6 +12,7 @@
 4. Sign-up/sign-in screens: scrollable forms using KeyboardAvoidingView + TouchableWithoutFeedback, a reusable InputField and custom buttons — wired with useState form handling and placeholder async handlers.
 5. Wire Clerk email auth into the app, then implement useSignUp / useSignIn flows in signup/signin screens including email verification modals and success modal handling.
 6. Adds a custom bottom tab bar (Tabs from expo-router) with four screens — Home, Rides, Chat and Profile.
+7. Add Neon Postgres (serverless driver) + Expo API routes so the app can create/read users server-side. Create a [user](</app/(api)/user+api.ts>) POST route that uses `@neondatabase/serverless` to run raw SQL, add a small fetch helper and the users table SQL.
 
 ## Technologies
 
@@ -20,6 +21,20 @@
 3. react-native-swiper: Carousel gestures on Onboarding screens
 4. Clerk: Email authentication (with OTP)
 5. react-native-modal: Customizable modal
+6. Neon: Postgres
+
+## Schema
+
+### Users
+
+```sql
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    clerk_id VARCHAR(50) UNIQUE NOT NULL
+);
+```
 
 ## How to Run (Android)
 

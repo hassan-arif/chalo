@@ -17,12 +17,12 @@
       "package": "com.hassanarifmahmood.Chalo"
     },
     "web": {
-      "output": "static",
+      "output": "server",
       "favicon": "./assets/images/favicon.png",
       "bundler": "metro"
     },
     "plugins": [
-      "expo-router",
+      ["expo-router", { "origin": "https://chalo.com/" }],
       [
         "expo-splash-screen",
         {
