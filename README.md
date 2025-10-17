@@ -13,6 +13,7 @@
 5. Wire Clerk email auth into the app, then implement useSignUp / useSignIn flows in signup/signin screens including email verification modals and success modal handling.
 6. Adds a custom bottom tab bar (Tabs from expo-router) with four screens — Home, Rides, Chat and Profile.
 7. Add Neon Postgres (serverless driver) + Expo API routes so the app can create/read users server-side. Create a [user](</app/(api)/user+api.ts>) POST route that uses `@neondatabase/serverless` to run raw SQL, add a small fetch helper and the users table SQL.
+8. Build the Home screen UI: List of recent rides, a reusable RideCard that shows a static map image (Geoapify), utility date formatting, and a GoogleTextInput placeholder for destination search.
 
 ## Technologies
 
@@ -21,7 +22,8 @@
 3. react-native-swiper: Carousel gestures on Onboarding screens
 4. Clerk: Email authentication (with OTP)
 5. react-native-modal: Customizable modal
-6. Neon: Postgres
+6. Neon: Postgres database
+7. [Geoapify](https://www.geoapify.com/): Maps service
 
 ## Schema
 
