@@ -22,7 +22,12 @@
       "bundler": "metro"
     },
     "plugins": [
-      ["expo-router", { "origin": "https://chalo.com/" }],
+      [
+        "expo-router",
+        {
+          "origin": "https://chalo.com/"
+        }
+      ],
       [
         "expo-splash-screen",
         {

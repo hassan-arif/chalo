@@ -14,6 +14,7 @@
 6. Adds a custom bottom tab bar (Tabs from expo-router) with four screens — Home, Rides, Chat and Profile.
 7. Add Neon Postgres (serverless driver) + Expo API routes so the app can create/read users server-side. Create a [user](</app/(api)/user+api.ts>) POST route that uses `@neondatabase/serverless` to run raw SQL, add a small fetch helper and the users table SQL.
 8. Build the Home screen UI: List of recent rides, a reusable RideCard that shows a static map image (Geoapify), utility date formatting, and a GoogleTextInput placeholder for destination search.
+9. Add an interactive Map component.
 
 ## Technologies
 
@@ -24,6 +25,7 @@
 5. react-native-modal: Customizable modal
 6. Neon: Postgres database
 7. [Geoapify](https://www.geoapify.com/): Maps service
+8. [react-native-maps](https://docs.expo.dev/versions/latest/sdk/map-view/), react-native-maps-directions: Interactive Map component
 
 ## Schema
 

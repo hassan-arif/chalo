@@ -1,4 +1,5 @@
 import GoogleTextInput from "@/components/GoogleTextInput";
+import Map from "@/components/Map";
 import RideCard from "@/components/RideCard";
 import { icons, images } from "@/constants";
 import { useClerk, useUser } from "@clerk/clerk-expo";
@@ -184,6 +185,17 @@ const Home = () => {
               containerStyle="bg-white shadow-md shadow-neutral-300"
               handlePress={handleDestinationPress}
             />
+
+            <>
+              <Text className="text-xl font-JakartaBold mt-5 mb-3">
+                Your Current Location
+              </Text>
+              <Map />
+            </>
+
+            <Text className="text-xl font-JakartaBold mt-5 mb-3">
+              Recent Rides
+            </Text>
           </>
         )}
       />
