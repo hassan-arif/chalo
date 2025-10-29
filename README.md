@@ -26,6 +26,7 @@
 6. Neon: Postgres database
 7. [Geoapify](https://www.geoapify.com/): Maps service
 8. [react-native-maps](https://docs.expo.dev/versions/latest/sdk/map-view/), react-native-maps-directions: Interactive Map component
+9. Zustand: Store
 
 ## Schema
 
