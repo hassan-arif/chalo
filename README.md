@@ -18,6 +18,7 @@
 10. Add a Google Places autocomplete input using react-native-google-places-autocomplete.
 11. Implement a reusable RideLayout (map + gorhom bottom sheet + back button) and the find-ride screen that uses it with two GoogleTextInput fields (From / To) and a Find Now button which pushes to confirm-ride
 12. Create the Confirm Ride screen using the existing RideLayout: render a FlatList of drivers (mocked for now), wire it to a driver store (zustand) and make each card selectable. Add a footer button that pushes to the booking route.
+13. Add the final Book Ride screen that reads the selected driver from the driver store, shows driver & trip details inside RideLayout and adds a Payment component.
 
 ## Technologies
 
