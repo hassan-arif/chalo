@@ -16,6 +16,7 @@
 8. Build the Home screen UI: List of recent rides, a reusable RideCard that shows a static map image (Geoapify), utility date formatting, and a GoogleTextInput placeholder for destination search.
 9. Add an interactive Map component.
 10. Add a Google Places autocomplete input using react-native-google-places-autocomplete.
+11. Implement a reusable RideLayout (map + gorhom bottom sheet + back button) and the find-ride screen that uses it with two GoogleTextInput fields (From / To) and a Find Now button which pushes to confirm-ride
 
 ## Technologies
 
@@ -29,6 +30,7 @@
 8. [react-native-maps](https://docs.expo.dev/versions/latest/sdk/map-view/), react-native-maps-directions: Interactive Map component
 9. Zustand: Store
 10. react-native-google-places-autocomplete
+11. @gorhom/bottom-sheet
 
 ## Schema
 

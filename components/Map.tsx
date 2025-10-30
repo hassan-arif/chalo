@@ -97,7 +97,7 @@ const Map = () => {
     <MapView
       ref={mapRef}
       provider={PROVIDER_DEFAULT}
-      style={{ width: "100%", height: 250 }}
+      style={{ width: "100%", height: "100%" }}
       mapType="standard"
       showsPointsOfInterest={false}
       initialRegion={region}

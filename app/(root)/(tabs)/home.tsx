@@ -5,8 +5,9 @@ import { icons, images } from "@/constants";
 import { useLocationStore } from "@/store";
 import { useClerk, useUser } from "@clerk/clerk-expo";
 import * as Linking from "expo-linking";
-import { useEffect, useState } from "react";
 import * as Location from "expo-location";
+import { router } from "expo-router";
+import { useEffect, useState } from "react";
 import {
   ActivityIndicator,
   Alert,
@@ -141,7 +142,14 @@ const Home = () => {
     }
   };
 
-  const handleDestinationPress = async () => {};
+  const handleDestinationPress = (location: {
+    latitude: number;
+    longitude: number;
+    address: string;
+  }) => {
+    setDestinationLocation(location);
+    router.push("/(root)/find-ride");
+  };
 
   useEffect(() => {
     const requestLocation = async () => {
@@ -220,7 +228,9 @@ const Home = () => {
               <Text className="text-xl font-JakartaBold mt-5 mb-3">
                 Your Current Location
               </Text>
-              <Map />
+              <View className="flex flex-row items-center bg-transparent h-[300px]">
+                <Map />
+              </View>
             </>
 
             <Text className="text-xl font-JakartaBold mt-5 mb-3">

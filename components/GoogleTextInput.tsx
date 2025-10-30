@@ -1,6 +1,7 @@
+import { icons } from "@/constants";
 import { GoogleInputProps } from "@/types/type";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 
 const GoogleTextInput = ({
@@ -16,7 +17,8 @@ const GoogleTextInput = ({
     >
       <GooglePlacesAutocomplete
         placeholder="Where you want to go?"
-        textInputProps={{ placeholderTextColor: "#d4d4d4" }}
+        fetchDetails={true}
+        debounce={200}
         styles={{
           textInputContainer: {
             alignItems: "center",
@@ -45,50 +47,65 @@ const GoogleTextInput = ({
           },
         }}
         onPress={(data, details = null) => {
-          console.log(data, details);
+          handlePress({
+            latitude: details?.geometry.location.lat!,
+            longitude: details?.geometry.location.lng!,
+            address: data.description,
+          });
         }}
+        renderLeftButton={() => (
+          <View className="justify-center items-center w-6 h-6">
+            <Image
+              source={icon ? icon : icons.search}
+              className="w-6 h-6"
+              resizeMode="contain"
+            />
+          </View>
+        )}
+        textInputProps={{
+          placeholderTextColor: "gray",
+          placeholder: initialLocation ?? "Where do you want to go?",
+        }}
+        predefinedPlaces={[]}
+        minLength={0}
+        timeout={20000}
+        keyboardShouldPersistTaps="handled"
         query={{
           key: process.env.EXPO_PUBLIC_GOOGLE_API_KEY,
           language: "en",
         }}
-        enablePoweredByContainer={false}
-        predefinedPlaces={[]}
-        autoFillOnNotFound={false}
-        currentLocation={false}
-        currentLocationLabel="Current location"
-        debounce={200}
-        disableScroll={false}
-        enableHighAccuracyLocation={true}
-        fetchDetails={true}
-        filterReverseGeocodingByTypes={[]}
-        GooglePlacesDetailsQuery={{}}
-        GooglePlacesSearchQuery={{
-          rankby: "distance",
-          type: "restaurant",
-        }}
-        GoogleReverseGeocodingQuery={{}}
-        isRowScrollable={true}
-        keyboardShouldPersistTaps="always"
-        listHoverColor="#ececec"
-        listUnderlayColor="#c8c7cc"
-        listViewDisplayed="auto"
-        keepResultsAfterBlur={false}
-        minLength={0}
-        nearbyPlacesAPI="GooglePlacesSearch"
-        numberOfLines={1}
-        onFail={(e) => {
-          console.warn("Google Place Failed : ", e);
-        }}
-        onNotFound={() => {}}
-        onTimeout={() =>
-          console.warn("google places autocomplete: request timeout")
-        }
-        predefinedPlacesAlwaysVisible={false}
-        suppressDefaultStyles={false}
-        textInputHide={false}
-        timeout={20000}
-        isNewPlacesAPI={false}
-        fields="*"
+        // enablePoweredByContainer={false}
+        // autoFillOnNotFound={false}
+        // currentLocation={false}
+        // currentLocationLabel="Current location"
+        // disableScroll={false}
+        // enableHighAccuracyLocation={true}
+        // filterReverseGeocodingByTypes={[]}
+        // GooglePlacesDetailsQuery={{}}
+        // GooglePlacesSearchQuery={{
+        //   rankby: "distance",
+        //   type: "restaurant",
+        // }}
+        // GoogleReverseGeocodingQuery={{}}
+        // isRowScrollable={true}
+        // listHoverColor="#ececec"
+        // listUnderlayColor="#c8c7cc"
+        // listViewDisplayed="auto"
+        // keepResultsAfterBlur={false}
+        // nearbyPlacesAPI="GooglePlacesSearch"
+        // numberOfLines={1}
+        // onFail={(e) => {
+        //   console.warn("Google Place Failed : ", e);
+        // }}
+        // onNotFound={() => {}}
+        // onTimeout={() =>
+        //   console.warn("google places autocomplete: request timeout")
+        // }
+        // predefinedPlacesAlwaysVisible={false}
+        // suppressDefaultStyles={false}
+        // textInputHide={false}
+        // isNewPlacesAPI={false}
+        // fields="*"
       />
     </View>
   );
