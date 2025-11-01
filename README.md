@@ -21,6 +21,7 @@
 13. Add the final Book Ride screen that reads the selected driver from the driver store, shows driver & trip details inside RideLayout and adds a Payment component.
 14. Integrate Stripe Payment Sheet. Add drivers table in neonDb and fetch default drivers from there. Integrate logic to calculate time/amount from marker data.
 15. Add path from source to destination address. Add new ride in neonDb.
+16. Replaced mock recent rides with dynamic rides fetched per logged-in user.
 
 ## Technologies
 

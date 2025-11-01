@@ -74,7 +74,12 @@ const SignUp = () => {
         <OAuth />
       </View>
 
-      <TouchableWithoutFeedback onPress={() => router.back()}>
+      <TouchableWithoutFeedback
+        onPress={() => {
+          if (router.canGoBack()) router.back();
+          else router.push("/(auth)/sign-up");
+        }}
+      >
         <View className="flex-row justify-center mt-10">
           <Text className="text-lg text-general-200">
             Don't have an account?{" "}
