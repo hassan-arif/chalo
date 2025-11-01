@@ -20,6 +20,7 @@
 12. Create the Confirm Ride screen using the existing RideLayout: render a FlatList of drivers (mocked for now), wire it to a driver store (zustand) and make each card selectable. Add a footer button that pushes to the booking route.
 13. Add the final Book Ride screen that reads the selected driver from the driver store, shows driver & trip details inside RideLayout and adds a Payment component.
 14. Integrate Stripe Payment Sheet. Add drivers table in neonDb and fetch default drivers from there. Integrate logic to calculate time/amount from marker data.
+15. Add path from source to destination address. Add new ride in neonDb.
 
 ## Technologies
 
@@ -46,6 +47,26 @@ CREATE TABLE users (
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     clerk_id VARCHAR(50) UNIQUE NOT NULL
+);
+```
+
+### Rides
+
+```sql
+CREATE TABLE rides (
+    ride_id SERIAL PRIMARY KEY,
+    origin_address VARCHAR(255) NOT NULL,
+    destination_address VARCHAR(255) NOT NULL,
+    origin_latitude DECIMAL(9, 6) NOT NULL,
+    origin_longitude DECIMAL(9, 6) NOT NULL,
+    destination_latitude DECIMAL(9, 6) NOT NULL,
+    destination_longitude DECIMAL(9, 6) NOT NULL,
+    ride_time INTEGER NOT NULL,
+    fare_price DECIMAL(10, 2) NOT NULL CHECK (fare_price >= 0),
+    payment_status VARCHAR(20) NOT NULL,
+    driver_id INTEGER REFERENCES drivers(id),
+    user_id VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
 
