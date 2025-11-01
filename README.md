@@ -19,6 +19,7 @@
 11. Implement a reusable RideLayout (map + gorhom bottom sheet + back button) and the find-ride screen that uses it with two GoogleTextInput fields (From / To) and a Find Now button which pushes to confirm-ride
 12. Create the Confirm Ride screen using the existing RideLayout: render a FlatList of drivers (mocked for now), wire it to a driver store (zustand) and make each card selectable. Add a footer button that pushes to the booking route.
 13. Add the final Book Ride screen that reads the selected driver from the driver store, shows driver & trip details inside RideLayout and adds a Payment component.
+14. Integrate Stripe Payment Sheet. Add drivers table in neonDb and fetch default drivers from there. Integrate logic to calculate time/amount from marker data.
 
 ## Technologies
 
@@ -33,6 +34,7 @@
 9. Zustand: Store
 10. react-native-google-places-autocomplete
 11. @gorhom/bottom-sheet
+12. Stripe
 
 ## Schema
 
@@ -44,6 +46,20 @@ CREATE TABLE users (
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     clerk_id VARCHAR(50) UNIQUE NOT NULL
+);
+```
+
+### Drivers
+
+```sql
+CREATE TABLE drivers (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    profile_image_url TEXT,
+    car_image_url TEXT,
+    car_seats INTEGER NOT NULL CHECK (car_seats > 0),
+    rating DECIMAL(3, 2) CHECK (rating >= 0 AND rating <= 5)
 );
 ```
 
