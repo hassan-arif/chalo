@@ -23,6 +23,7 @@
 15. Add path from source to destination address. Add new ride in neonDb.
 16. Replaced mock recent rides with dynamic rides fetched per logged-in user.
 17. Integrated Google OAuth authentication using Clerk’s custom flow for Expo. Added GoogleOAuth utility to handle sign-in/sign-up, create database users, and redirect upon success.
+18. Built the “All Rides” screen by reusing the FlatList from the home page to display every user ride fetched dynamically.
 
 ## Technologies
 
