@@ -22,13 +22,14 @@
 14. Integrate Stripe Payment Sheet. Add drivers table in neonDb and fetch default drivers from there. Integrate logic to calculate time/amount from marker data.
 15. Add path from source to destination address. Add new ride in neonDb.
 16. Replaced mock recent rides with dynamic rides fetched per logged-in user.
+17. Integrated Google OAuth authentication using Clerk’s custom flow for Expo. Added GoogleOAuth utility to handle sign-in/sign-up, create database users, and redirect upon success.
 
 ## Technologies
 
 1. NativeWind: Style using Tailwind CSS
 2. Lint/Prettier: Catching bad/error code and fix how it looks
 3. react-native-swiper: Carousel gestures on Onboarding screens
-4. Clerk: Email authentication (with OTP)
+4. Clerk: Email authentication (with OTP) and Google Authentication
 5. react-native-modal: Customizable modal
 6. Neon: Postgres database
 7. [Geoapify](https://www.geoapify.com/): Maps service
