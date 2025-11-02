@@ -24,6 +24,7 @@
 16. Replaced mock recent rides with dynamic rides fetched per logged-in user.
 17. Integrated Google OAuth authentication using Clerk’s custom flow for Expo. Added GoogleOAuth utility to handle sign-in/sign-up, create database users, and redirect upon success.
 18. Built the “All Rides” screen by reusing the FlatList from the home page to display every user ride fetched dynamically.
+19. Added the final two app screens: a static Profile screen displaying user info (photo, name, email, optional phone) with read-only inputs reused from existing components, and a placeholder Messages screen showing "No messages yet".
 
 ## Technologies
 
