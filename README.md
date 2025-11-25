@@ -4,8 +4,8 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/license/hassanarifmahmood/chalo?color=brightgreen" />
-  <img src="https://img.shields.io/github/stars/hassanarifmahmood/chalo?style=social" />
+  <!-- <img src="https://img.shields.io/github/license/hassan-arif/chalo?color=brightgreen" /> -->
+  <img src="https://img.shields.io/github/stars/hassan-arif/chalo?style=social" />
   <img src="https://img.shields.io/badge/Expo-React%20Native-blue" />
   <img src="https://img.shields.io/badge/Database-Neon%20Postgres-orange" />
   <img src="https://img.shields.io/badge/Auth-Clerk-red" />
