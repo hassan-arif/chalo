@@ -1,8 +1,9 @@
-import { Image, StyleSheet, Text, View } from "react-native";
-import React from "react";
-import { Ride } from "@/types/type";
 import { icons } from "@/constants";
 import { formatDate, formatTime } from "@/lib/utils";
+import { Ride } from "@/types/type";
+import Constants from "expo-constants";
+import React from "react";
+import { Image, StyleSheet, Text, View } from "react-native";
 
 const RideCard = ({
   ride: {
@@ -29,7 +30,7 @@ const RideCard = ({
         <View className="flex flex-row items-center justify-between">
           <Image
             source={{
-              uri: `https://maps.geoapify.com/v1/staticmap?style=osm-bright&width=600&height=400&center=lonlat:${destination_longitude},${destination_latitude}&zoom=14&apiKey=${process.env.EXPO_PUBLIC_GEOAPIFY_API_KEY}`,
+              uri: `https://maps.geoapify.com/v1/staticmap?style=osm-bright&width=600&height=400&center=lonlat:${destination_longitude},${destination_latitude}&zoom=14&apiKey=${Constants.expoConfig?.extra?.EXPO_PUBLIC_GEOAPIFY_API_KEY}`,
             }}
             className="w-[80px] h-[80px] rounded-lg"
           />

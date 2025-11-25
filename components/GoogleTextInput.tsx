@@ -1,5 +1,6 @@
 import { icons } from "@/constants";
 import { GoogleInputProps } from "@/types/type";
+import Constants from "expo-constants";
 import React from "react";
 import { Image, StyleSheet, View } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
@@ -71,7 +72,7 @@ const GoogleTextInput = ({
         timeout={20000}
         keyboardShouldPersistTaps="handled"
         query={{
-          key: process.env.EXPO_PUBLIC_GOOGLE_API_KEY,
+          key: Constants.expoConfig?.extra?.EXPO_PUBLIC_GOOGLE_API_KEY,
           language: "en",
         }}
         // enablePoweredByContainer={false}

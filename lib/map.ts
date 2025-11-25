@@ -1,6 +1,7 @@
 import { Driver, MarkerData } from "@/types/type";
+import Constants from "expo-constants";
 
-const directionsAPI = process.env.EXPO_PUBLIC_GOOGLE_API_KEY;
+const directionsAPI = Constants.expoConfig?.extra?.EXPO_PUBLIC_GOOGLE_API_KEY;
 
 export const generateMarkersFromData = ({
   data,

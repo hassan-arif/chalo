@@ -1,24 +1,45 @@
-import Payment from "@/components/Payment";
 import RideLayout from "@/components/RideLayout";
 import { icons } from "@/constants";
 import { formatTime } from "@/lib/utils";
 import { useDriverStore, useLocationStore } from "@/store";
 import { useUser } from "@clerk/clerk-expo";
-import { StripeProvider } from "@stripe/stripe-react-native";
-import { Image, Text, View } from "react-native";
+import Constants from "expo-constants";
+import React from "react";
+import { Image, Platform, Text, View } from "react-native";
+
+let StripeProvider: any = null;
+let Payment: any = null;
+if (Platform.OS !== "web") {
+  StripeProvider = require("@stripe/stripe-react-native").StripeProvider;
+  Payment = require("@/components/Payment").default;
+}
 
 const BookRide = () => {
   const { user } = useUser();
   const { userAddress, destinationAddress } = useLocationStore();
   const { drivers, selectedDriver } = useDriverStore();
 
-  const driverDetails = drivers?.filter(
+  const driverDetails = drivers?.find(
     (driver) => +driver.id === selectedDriver
-  )[0];
+  );
+
+  if (Platform.OS === "web") {
+    return (
+      <RideLayout title="Book Ride">
+        <View className="flex-1 items-center justify-center">
+          <Text className="text-lg">
+            Booking rides is not supported on web.
+          </Text>
+        </View>
+      </RideLayout>
+    );
+  }
 
   return (
     <StripeProvider
-      publishableKey={process.env.EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY!}
+      publishableKey={
+        Constants.expoConfig?.extra?.EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY!
+      }
       merchantIdentifier="merchant.chalo"
       urlScheme="chalo"
     >

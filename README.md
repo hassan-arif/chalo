@@ -131,6 +131,18 @@ CREATE TABLE drivers (
 
 ## Running on Android
 
+Please create .env file and set relevant values before continuing
+
+```bash
+EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=value1
+EXPO_PUBLIC_GEOAPIFY_API_KEY=value2
+EXPO_PUBLIC_GOOGLE_API_KEY=value3
+EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY=value4
+
+DATABASE_URL=value5
+STRIPE_SECRET_KEY=value6
+```
+
 ### Debug
 
 ```bash
@@ -142,6 +154,16 @@ yarn android
 ```
 
 ### Release
+
+#### Server
+
+```bash
+eas login
+npx expo export --platform web --no-ssg
+eas deploy # copy deployed server origin and adjust it in app.json after this step
+```
+
+#### Client
 
 ```bash
 cd android

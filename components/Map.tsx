@@ -7,10 +7,25 @@ import {
 } from "@/lib/map";
 import { useDriverStore, useLocationStore } from "@/store";
 import { Driver, MarkerData } from "@/types/type";
+import Constants from "expo-constants";
 import React, { useEffect, useRef, useState } from "react";
-import { ActivityIndicator, Text, View } from "react-native";
-import MapView, { Marker, PROVIDER_DEFAULT, Region } from "react-native-maps";
-import MapViewDirections from "react-native-maps-directions";
+import { ActivityIndicator, Platform, Text, View } from "react-native";
+
+// Only import MapView on native
+let MapView: any = null;
+let Marker: any = null;
+let MapViewDirections: any = null;
+let PROVIDER_DEFAULT: any = null;
+let RegionType: any = null;
+
+if (Platform.OS !== "web") {
+  const rnMaps = require("react-native-maps");
+  MapView = rnMaps.default;
+  Marker = rnMaps.Marker;
+  PROVIDER_DEFAULT = rnMaps.PROVIDER_DEFAULT;
+  RegionType = rnMaps.Region;
+  MapViewDirections = require("react-native-maps-directions").default;
+}
 
 const Map = () => {
   const {
@@ -32,14 +47,13 @@ const Map = () => {
     userLatitude,
     destinationLatitude,
     destinationLongitude,
-  }) as Region;
+  }) as typeof RegionType;
 
-  const mapRef = useRef<MapView | null>(null);
+  const mapRef = useRef<any>(null);
 
   // Animate on region change
   useEffect(() => {
     if (!mapRef.current) return;
-
     if (userLatitude != null && userLongitude != null) {
       mapRef.current.animateToRegion(region, 500);
     }
@@ -70,14 +84,29 @@ const Map = () => {
     }
   }, [markers, destinationLatitude, destinationLongitude]);
 
+  // Web fallback
+  if (Platform.OS === "web") {
+    return (
+      <View className="flex-1 justify-center items-center">
+        <Text>Map is not available on web</Text>
+      </View>
+    );
+  }
+
   if (loading || !userLatitude || !userLongitude) {
-    <View className="flex justify-between items-center w-full">
-      <ActivityIndicator size={"small"} color={"#000"} />
-    </View>;
-  } else if (error) {
-    <View className="flex justify-between items-center w-full">
-      <Text>Error: {error}</Text>
-    </View>;
+    return (
+      <View className="flex justify-center items-center w-full h-full">
+        <ActivityIndicator size="small" color="#000" />
+      </View>
+    );
+  }
+
+  if (error) {
+    return (
+      <View className="flex justify-center items-center w-full h-full">
+        <Text>Error: {error}</Text>
+      </View>
+    );
   }
 
   return (
@@ -108,12 +137,12 @@ const Map = () => {
       {destinationLatitude && destinationLongitude && (
         <>
           <Marker
-            key={"destination"}
+            key="destination"
             coordinate={{
               latitude: destinationLatitude,
               longitude: destinationLongitude,
             }}
-            title={"Destination"}
+            title="Destination"
             image={icons.pin}
           />
 
@@ -126,7 +155,7 @@ const Map = () => {
               latitude: destinationLatitude!,
               longitude: destinationLongitude!,
             }}
-            apikey={process.env.EXPO_PUBLIC_GOOGLE_API_KEY!}
+            apikey={Constants.expoConfig?.extra?.EXPO_PUBLIC_GOOGLE_API_KEY!}
             strokeColor="#0286ff"
             strokeWidth={3}
           />
