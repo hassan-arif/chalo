@@ -15,7 +15,11 @@
 Chalo is a full-stack ride-hailing application built with Expo, React Native, Neon Postgres, Clerk authentication, and Stripe payments.  
 It recreates a complete mobility experience: onboarding, authentication, maps, location search, routing, driver selection, ride booking, and payments.
 
----
+## Demo
+
+<p align='center'>
+  <img src='assets/images/demo.gif' alt='Chalo Demo' width='250px'/>
+</p>
 
 ## Features
 
